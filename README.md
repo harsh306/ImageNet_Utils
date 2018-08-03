@@ -5,6 +5,13 @@ Grap the source
 
 `$ git clone --recursive https://github.com/tzutalin/ImageNet_Utils.git`
 
+## Get All image classes shuffled, prallel download
+#Not required
+`awk '{print $1}' fall11_urls.txt | rev |cut -d '_' -f 2 |rev | uniq | shuf > image_classes.txt`
+
+`for j  in $(awk 'NR<=5000 {print $0}' image_classes_shuffled); do ./downloadutils.py --downloadImages --wnid $j & done`
+
+
 ### Requirements
 If you would like to download the original images, you should signup [ImageNet](http://www.image-net.org/)
 
